@@ -1,14 +1,14 @@
 {
     "manifest_version": 2,
-    "name": "Coxmoray",
+    "name": "Cosmoray",
     "description": "百度贴吧优化插件 By WinslowEric",
     "version": "0.0.1",
     "permissions": [
         "tabs",
-        "https://api.cr.wlinc.cc",
-        "https://data.cr.wlinc.cc",
-        "https://verify.cr.wlinc.cc",
-        "https://rt.cr.wlinc.cc",
+        "https://api.cr.wlink.cc/",
+        "https://data.cr.wlink.cc/",
+        "https://verify.cr.wlink.cc/",
+        "https://rt.cr.wlink.cc/",
         "https://tieba.baidu.com/",
         "contextMenus",
 		"tabs",
@@ -28,6 +28,7 @@
 		{
 			"matches": ["<all_urls>"],
 			"js": ["scripts/jquery.js","scripts/kernal.js"],
+			"css": ["css/kernal.css"],
 			"run_at": "document_start"
 		}
 	],
