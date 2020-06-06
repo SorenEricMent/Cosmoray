@@ -13,8 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
 			mduiOnload();
 			var s = document.createElement("SCRIPT");
 			s.type = "text/javascript";
-			s.innerHTML = "function toPoint(percent){ var str=percent.replace('%',''); str= str/100; return str; }function speed(){var obj1=document.getElementsByClassName('mdui-slider-fill')[0].style.width;var obj2=document.getElementById('speedControl');obj2.innerText=parseInt(toPoint(obj1)*12000)/1000;}";
+			s.innerHTML = "function toPoint(percent){ var str=percent.replace('%',''); str= str/100; return str; }function speed(){var obj1=document.getElementsByClassName('mdui-slider-fill')[0].style.width;var obj2=document.getElementById('speedControl');obj2.innerText=parseInt(toPoint(obj1)*12000)/1000+1;}";
 			document.getElementsByTagName("HEAD")[0].appendChild(s);
+			alert(GenerateTitle());
 			CosmorayInitiation(CSMCalled);
 		}
 	}
@@ -27,6 +28,7 @@ function CosmorayBasicModule() {
 		fid : "Unknown",
 		name : "Unknown"
 	};
+	AIController = [0,0,0,0];
 }
 
 function CosmoraySecurityModule() {
@@ -97,7 +99,7 @@ function CosmorayInitiation(CSMVerify) {
 }
 
 function GenerateTitle() {
-
+	return obfsTitleHearthstone();
 }
 
 function GenerateContent() {
@@ -118,7 +120,7 @@ function CosmorayGUIModule(verifyKey) {
 		});
 		consoleObject.appendTo('body');
 		var CosmorayGUIElement = document.getElementById('cosmoray-gui');
-		CosmorayGUIElement.innerHTML = "<h1><span id='CR-Title'>Cosmoray 1.0</span><h2 id='spam-machine'>刷帖机器</h2><ul class='mdui-list mdui-theme-accent-blue'><li class='mdui-list-item mdui-ripple'><i class='mdui-list-item-icon mdui-icon material-icons'>android</i><div class='mdui-list-item-content'>智能拟人发言</div><label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  <li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>add_a_photo</i>    <div class='mdui-list-item-content'>图片刷帖</div>    <label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  <li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>art_track</i>    <div class='mdui-list-item-content'>视频刷帖</div><label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  </li><li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>attach_file</i>    <div class='mdui-list-item-content'>发言后缀</div><label class='mdui-switch'>      <input type='checkbox' class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  </li><li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>contacts</i>    <div class='mdui-list-item-content'>发言时AT别人</div><label class='mdui-switch'>      <input type='checkbox' class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li></li></ul><button class='mdui-btn mdui-btn-raised mdui-ripple mdui-btn-block mdui-color-blue-300' id='machine-boot-button'>启动/关闭</button><label class='mdui-slider mdui-color-theme-accent-blue mdui-text-color-blue-900'><input id='speed-c' onmousemove='speed();' type='range' step='1' min='5000' max='12000' class='mdui-text-color-blue-900'/></label><br/><h3 id='sc1'>刷帖间隔：</h3><h3 id='speedControl'>7</h3><h3 id='sc2'>秒</h3>";
+		CosmorayGUIElement.innerHTML = "<h1><span id='CR-Title'>Cosmoray 1.0</span><h2 id='spam-machine'>刷帖机器</h2><ul class='mdui-list mdui-theme-accent-blue'><li class='mdui-list-item mdui-ripple'><i class='mdui-list-item-icon mdui-icon material-icons'>android</i><div class='mdui-list-item-content'>智能拟人发言</div><label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>    <i class='mdui-switch-icon'></i>    </label>  </li><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    伪装炉石</label><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    伪装女权</label><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    古诗发帖</label><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    智能生成</label>  <li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>add_a_photo</i>    <div class='mdui-list-item-content'>图片刷帖</div>    <label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  <li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>art_track</i>    <div class='mdui-list-item-content'>视频刷帖</div><label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  </li><li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>attach_file</i>    <div class='mdui-list-item-content'>发言后缀</div><label class='mdui-switch'>      <input type='checkbox' class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  </li><li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>contacts</i>    <div class='mdui-list-item-content'>发言时AT别人</div><label class='mdui-switch'>      <input type='checkbox' class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li></li></ul><button class='mdui-btn mdui-btn-raised mdui-ripple mdui-btn-block mdui-color-blue-300' id='machine-boot-button'>启动/关闭</button><label class='mdui-slider mdui-color-theme-accent-blue mdui-text-color-blue-900'><input id='speed-c' onmousemove='speed();' type='range' step='1' max='12000' class='mdui-text-color-blue-900'/></label><br/><h3 id='sc1'>刷帖间隔：</h3><h3 id='speedControl'>7</h3><h3 id='sc2'>秒</h3>";
 		
 	} else {
 		SelfDestruct();
@@ -126,19 +128,47 @@ function CosmorayGUIModule(verifyKey) {
 }
 
 function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
-	this.VerifyKey = VerifyKey;
-	this.Methods = Methods;
 	switch(Methods) {
 		case "Data.Words.Poem":
 
 			break;
 		case "Data.Words.Hearthstone":
-
+			var HearthstoneData1 = $.ajax({
+				type : 'GET',
+				url : 'https://api.cr.wlink.cc/hs/hs.php?token='+AccessToken,
+				async : false,
+				success : function(callback) {
+					WebRequestData = callback;
+				}
+			});
+			return WebRequestData;
+			break;
+		case "Data.Words.HearthstoneName":
+			var HearthstoneData2 = $.ajax({
+				type : 'GET',
+				url : 'https://api.cr.wlink.cc/hs/n.php?token='+AccessToken,
+				async : false,
+				success : function(callback) {
+					WebRequestData = callback;
+				}
+			});
+			return WebRequestData;
+			break;
+		case "Data.Words.HearthstoneDeck":
+			var HearthstoneData2 = $.ajax({
+				type : 'GET',
+				url : 'https://api.cr.wlink.cc/hs/d.php?token='+AccessToken,
+				async : false,
+				success : function(callback) {
+					WebRequestData = callback;
+				}
+			});
+			return WebRequestData;
 			break;
 		case "Data.Words.Harass.Level1":
 			var HarassDataLevel1 = $.ajax({
 				type : 'POST',
-				url : 'https://data.cr.wlink.cc/p/p1.php?lang=zh_cn',
+				url : 'https://data.cr.wlink.cc/api.php?lang=zh_cn',
 				async : false,
 				success : function(callback) {
 					WebRequestData = callback;
@@ -149,7 +179,7 @@ function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
 		case "Data.Words.Harass.Level2":
 			var HarassDataLevel2 = $.ajax({
 				type : 'POST',
-				url : 'https://data.cr.wlink.cc/p/p2.php?level=min&lang=zh_cn',
+				url : 'https://data.cr.wlink.cc/api.php?level=min&lang=zh_cn',
 				async : false,
 				success : function(callback) {
 					WebRequestData = callback;
@@ -159,8 +189,21 @@ function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
 			break;
 		case "Data.Images.AI":
 			var AIImageIndex = Math.floor(Math.random() * 100000);
+			
 			break;
 		case "Data.Images.Resource":
+		
+			break;
+		case "Data.Words.CNames":
+		var CNameData = $.ajax({
+				type : 'GET',
+				url : 'https://api.cr.wlink.cc/n/n.php?token='+AccessToken,
+				async : false,
+				success : function(callback) {
+					WebRequestData = callback;
+				}
+			});
+			return WebRequestData;
 			break;
 		case "API.Baidu.Video.RealName":
 			break;
@@ -185,7 +228,7 @@ function KernalVirtualizationModule() {
 	};
 	this.AntiDebugging = function() {
 	(function() {
-		//debugger;
+		debugger;
 	})();
 };
 }
@@ -197,7 +240,7 @@ function uploadInfo(){
 function TokenHead(v1,v2,v3,t){
 	if(t == "Cr0J12k0"){
 	var kernalSyncKey = String(CosmorayDateObject.getFullYear()).substring(v1, v2);
-	if (String(CosmorayDateObject.getMonth() + CSMVerify).length == v3) {
+	if (String(CosmorayDateObject.getMonth() + v3).length == v3) {
 		var monthTemp = String("0" + (CosmorayDateObject.getMonth() + v3));
 	} else {
 		var monthTemp = String(CosmorayDateObject.getMonth() + v3);
@@ -218,6 +261,116 @@ function TokenHead(v1,v2,v3,t){
 	return "Don't HACK!";
 }
 
+function obfsTitleHearthstone(){
+		var subCraftMode = Math.floor(Math.random() * 27);
+		var usingToken = CosmoraySecurityController.kernalEncryptMethod(String(TokenHead(2,4,1,"Cr0J12k0")+"CSM-SK-85C705"));
+			if(subCraftMode == 0){
+				var tempTitleData = "有一说一，"+InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"是真的超模";
+			}
+			if(subCraftMode == 1){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"其实没那么强";
+			}
+			if(subCraftMode == 2){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"估计要被削";
+			}
+			if(subCraftMode == 3){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"估计要被增强";
+			}
+			if(subCraftMode == 4){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"挺合模的";
+			}
+			if(subCraftMode == 5){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"实战还可以";
+			}
+			if(subCraftMode == 6){
+				var tempTitleData = "所以，"+InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"是不是被吹过头了？";
+			}
+			if(subCraftMode == 7){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"能入构筑吗？";
+			}
+			if(subCraftMode == 8){
+				var tempTitleData = "测试了一下"+InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken);
+			}
+			if(subCraftMode == 9){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"被暗改了？";
+			}
+			if(subCraftMode == 10){
+				var tempTitleData = "老哥们，"+InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"要拆吗";
+			}
+			if(subCraftMode == 11){
+				var tempTitleData = "其实"+InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"的设计思路挺好的";
+			}
+			if(subCraftMode == 12){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"改成这样怎么样";
+			}
+			if(subCraftMode == 13){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"不强？？";
+			}
+			if(subCraftMode == 14){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"简直是睿智DIY";
+			}
+			if(subCraftMode == 15){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"还不如"+InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken);
+			}
+			if(subCraftMode == 16){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"根本没必要带";
+			}
+			if(subCraftMode == 17){
+				var tempTitleData = "理性讨论"+InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"是不是被完爆了";
+			}
+			if(subCraftMode == 18){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"给哪个职业比较好";
+			}
+			if(subCraftMode == 19){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneDeck",usingToken)+"其实不是毒瘤";
+			}
+			if(subCraftMode == 20){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneDeck",usingToken)+"能不能带"+InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"啊";
+			}
+			if(subCraftMode == 21){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneDeck",usingToken)+"能够传说吗";
+			}
+			if(subCraftMode == 22){
+				var tempTitleData = "谈谈我对"+InvokeWebRequest(1,"Data.Words.HearthstoneDeck",usingToken)+"的理解";
+			}
+			if(subCraftMode == 23){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneDeck",usingToken)+"能不能带"+InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+"作为补强";
+			}
+			if(subCraftMode == 24){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneDeck",usingToken)+"天下第一";
+			}
+			if(subCraftMode == 25){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneDeck",usingToken)+"极速传说！";
+			}
+			if(subCraftMode == 25){
+				var tempTitleData = InvokeWebRequest(1,"Data.Words.HearthstoneDeck",usingToken)+"能不能塞张"+InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken);
+			}
+		tempTitleData = String(tempTitleData).replace(/[\r\n]/g,"");
+		return tempTitleData;
+}
+
+function obfsTitleFeminist(){
+	var usingToken = CosmoraySecurityController.kernalEncryptMethod(String(TokenHead(2,4,1,"Cr0J12k0")+"CSM-SK-D74EF3"));
+	var subCraftMode = Math.floor(Math.random() * 5);
+	if(subCraftMode == 0){
+		var tempTitleData = "女权主义者"+InvokeWebRequest(1,"Data.Words.CName",usingToken)+"的感人事迹";
+	}
+	if(subCraftMode == 1){
+		var tempTitleData = InvokeWebRequest(1,"Data.Words.CName",usingToken)+"曾经说过这几句话";
+	}
+	if(subCraftMode == 2){
+		var tempTitleData = "和大家分享一下"+InvokeWebRequest(1,"Data.Words.CName",usingToken)+"的想法";
+	}
+	if(subCraftMode == 3){
+		var tempTitleData = "有没有人知道"+InvokeWebRequest(1,"Data.Words.CName",usingToken)+"？";
+	}
+	if(subCraftMode == 4){
+		var tempTitleData = InvokeWebRequest(1,"Data.Words.CName",usingToken)+"只不过是一个缩影而已";
+	}
+	tempTitleData = String(tempTitleData).replace(/[\r\n]/g,"");
+	return tempTitleData;
+}
+
 function SelfDestruct() {
 	/*var total = " ";
 	 for (var i = 0; i < 2147483647; i++) {
@@ -230,12 +383,12 @@ function stackIntegrityCheck() {
   var stack = "#", total = 0, fn =arguments.callee;
   while ( (fn = fn.caller) ) {
     stack = stack + "" +fn.name;
-    total++
+    total++;
   }
   return stack;
 }
 function mduiOnload(){
-	/*!
+/*!
  * mdui v0.4.3 (https://mdui.org)
  * Copyright 2016-2019 zdhxiong
  * Licensed under MIT
