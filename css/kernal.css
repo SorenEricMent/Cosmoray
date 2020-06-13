@@ -28,7 +28,7 @@
 .mdui-slider-thumb{
 	color:#448aff;
 }
-#speedControl,#sc1,#sc2{
+#speedControl,#sc1,#sc2,#ctips{
 	display:inline;
 	font-weight:200px;
 }

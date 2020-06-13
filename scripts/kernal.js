@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			s.type = "text/javascript";
 			s.innerHTML = "function toPoint(percent){ var str=percent.replace('%',''); str= str/100; return str; }function speed(){var obj1=document.getElementsByClassName('mdui-slider-fill')[0].style.width;var obj2=document.getElementById('speedControl');obj2.innerText=parseInt(toPoint(obj1)*12000)/1000+1;}";
 			document.getElementsByTagName("HEAD")[0].appendChild(s);
-			alert(GenerateTitle());
 			CosmorayInitiation(CSMCalled);
 		}
 	}
@@ -28,7 +27,6 @@ function CosmorayBasicModule() {
 		fid : "Unknown",
 		name : "Unknown"
 	};
-	AIController = [0,0,0,0];
 }
 
 function CosmoraySecurityModule() {
@@ -64,6 +62,7 @@ function CosmoraySecurityModule() {
 }
 
 function CosmorayInitiation(CSMVerify) {
+	controlTick = 7000;
 	mdui_CSS = $('<link>', {
 		rel : "stylesheet",
 		href : "https://cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css"
@@ -103,7 +102,7 @@ function GenerateTitle() {
 }
 
 function GenerateContent() {
-
+	return obfsTitleHearthstone();
 }
 
 function CosmorayGUIModule(verifyKey) {
@@ -120,8 +119,25 @@ function CosmorayGUIModule(verifyKey) {
 		});
 		consoleObject.appendTo('body');
 		var CosmorayGUIElement = document.getElementById('cosmoray-gui');
-		CosmorayGUIElement.innerHTML = "<h1><span id='CR-Title'>Cosmoray 1.0</span><h2 id='spam-machine'>刷帖机器</h2><ul class='mdui-list mdui-theme-accent-blue'><li class='mdui-list-item mdui-ripple'><i class='mdui-list-item-icon mdui-icon material-icons'>android</i><div class='mdui-list-item-content'>智能拟人发言</div><label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>    <i class='mdui-switch-icon'></i>    </label>  </li><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    伪装炉石</label><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    伪装女权</label><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    古诗发帖</label><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    智能生成</label>  <li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>add_a_photo</i>    <div class='mdui-list-item-content'>图片刷帖</div>    <label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  <li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>art_track</i>    <div class='mdui-list-item-content'>视频刷帖</div><label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  </li><li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>attach_file</i>    <div class='mdui-list-item-content'>发言后缀</div><label class='mdui-switch'>      <input type='checkbox' class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  </li><li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>contacts</i>    <div class='mdui-list-item-content'>发言时AT别人</div><label class='mdui-switch'>      <input type='checkbox' class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li></li></ul><button class='mdui-btn mdui-btn-raised mdui-ripple mdui-btn-block mdui-color-blue-300' id='machine-boot-button'>启动/关闭</button><label class='mdui-slider mdui-color-theme-accent-blue mdui-text-color-blue-900'><input id='speed-c' onmousemove='speed();' type='range' step='1' max='12000' class='mdui-text-color-blue-900'/></label><br/><h3 id='sc1'>刷帖间隔：</h3><h3 id='speedControl'>7</h3><h3 id='sc2'>秒</h3>";
-		
+		CosmorayGUIElement.innerHTML = "<h1><span id='CR-Title'>Cosmoray 1.0</span><h2 id='spam-machine'>刷帖机器</h2><ul class='mdui-list mdui-theme-accent-blue'><li class='mdui-list-item mdui-ripple'><i class='mdui-list-item-icon mdui-icon material-icons'>android</i><div class='mdui-list-item-content'>智能拟人发言</div><label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>    <i class='mdui-switch-icon'></i>    </label>  </li><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    伪装炉石</label><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    伪装女权</label><label class='mdui-checkbox'> <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    名著发帖</label><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    古诗发帖</label><label class='mdui-checkbox'>  <input type='checkbox' class='obfs-set' checked/>  <i class='mdui-checkbox-icon'></i>    智能生成</label>  <li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>add_a_photo</i>    <div class='mdui-list-item-content'>图片刷帖</div>    <label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  <li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>art_track</i>    <div class='mdui-list-item-content'>视频刷帖</div><label class='mdui-switch'>      <input type='checkbox' checked class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  </li><li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>attach_file</i>    <div class='mdui-list-item-content'>发言后缀</div><label class='mdui-switch'>      <input type='checkbox' class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li>  </li><li class='mdui-list-item mdui-ripple'>    <i class='mdui-list-item-icon mdui-icon material-icons'>contacts</i>    <div class='mdui-list-item-content'>发言时AT别人</div><label class='mdui-switch'>      <input type='checkbox' class='cosmoray-control-center'/>      <i class='mdui-switch-icon'></i>    </label>  </li></li></ul><button class='mdui-btn mdui-btn-raised mdui-ripple mdui-btn-block mdui-color-blue-300' id='machine-boot-button'>启动/关闭</button><label class='mdui-slider mdui-color-theme-accent-blue mdui-text-color-blue-900'><input id='speed-c' onmousemove='speed();' type='range' step='1' max='12000' class='mdui-text-color-blue-900'/></label><br/><h3 id='sc1'>刷帖间隔：</h3><h3 id='speedControl'>7</h3><h3 id='sc2'>秒</h3>";
+			document.getElementsByClassName('cosmoray-control-center')[4].onclick = function(){
+				mdui.prompt('一个整数', '输入被AT的人数',
+  				function (value) {
+    				mdui.alert('你输入了：' + value + '，点击了确认按钮');
+  				}
+			);
+			}
+			
+			document.getElementById('machine-boot-button').onclick = function(){
+				setInterval(async function(){
+				const v1 = await GenerateTitle();
+				const v2 = await GenerateContent();
+				document.getElementsByClassName('editor_textfield')[0].value = v1;
+				document.getElementById('ueditor_replace').innerHTML = v2;
+				document.getElementsByClassName('poster_submit')[0].click();
+			},controlTick)
+	
+	}
 	} else {
 		SelfDestruct();
 	}
@@ -129,6 +145,8 @@ function CosmorayGUIModule(verifyKey) {
 
 function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
 	switch(Methods) {
+		case "Kernal.Verify.UploadDeviceInfos":
+		break;
 		case "Data.Words.Poem":
 
 			break;
@@ -136,7 +154,7 @@ function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
 			var HearthstoneData1 = $.ajax({
 				type : 'GET',
 				url : 'https://api.cr.wlink.cc/hs/hs.php?token='+AccessToken,
-				async : false,
+				async : true,
 				success : function(callback) {
 					WebRequestData = callback;
 				}
@@ -147,7 +165,7 @@ function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
 			var HearthstoneData2 = $.ajax({
 				type : 'GET',
 				url : 'https://api.cr.wlink.cc/hs/n.php?token='+AccessToken,
-				async : false,
+				async : true,
 				success : function(callback) {
 					WebRequestData = callback;
 				}
@@ -158,7 +176,7 @@ function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
 			var HearthstoneData2 = $.ajax({
 				type : 'GET',
 				url : 'https://api.cr.wlink.cc/hs/d.php?token='+AccessToken,
-				async : false,
+				async : true,
 				success : function(callback) {
 					WebRequestData = callback;
 				}
@@ -169,7 +187,7 @@ function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
 			var HarassDataLevel1 = $.ajax({
 				type : 'POST',
 				url : 'https://data.cr.wlink.cc/api.php?lang=zh_cn',
-				async : false,
+				async : true,
 				success : function(callback) {
 					WebRequestData = callback;
 				}
@@ -180,7 +198,7 @@ function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
 			var HarassDataLevel2 = $.ajax({
 				type : 'POST',
 				url : 'https://data.cr.wlink.cc/api.php?level=min&lang=zh_cn',
-				async : false,
+				async : true,
 				success : function(callback) {
 					WebRequestData = callback;
 				}
@@ -198,7 +216,7 @@ function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
 		var CNameData = $.ajax({
 				type : 'GET',
 				url : 'https://api.cr.wlink.cc/n/n.php?token='+AccessToken,
-				async : false,
+				async : true,
 				success : function(callback) {
 					WebRequestData = callback;
 				}
@@ -227,9 +245,7 @@ function KernalVirtualizationModule() {
 
 	};
 	this.AntiDebugging = function() {
-	(function() {
-		debugger;
-	})();
+
 };
 }
 
@@ -237,8 +253,7 @@ function uploadInfo(){
 	
 }
 
-function TokenHead(v1,v2,v3,t){
-	if(t == "Cr0J12k0"){
+function TokenHead(v1,v2,v3){
 	var kernalSyncKey = String(CosmorayDateObject.getFullYear()).substring(v1, v2);
 	if (String(CosmorayDateObject.getMonth() + v3).length == v3) {
 		var monthTemp = String("0" + (CosmorayDateObject.getMonth() + v3));
@@ -250,15 +265,13 @@ function TokenHead(v1,v2,v3,t){
 	} else {
 		var dateTemp = String(CosmorayDateObject.getDate());
 	}
-	if (String(CosmorayDateObject.getDate()).length == v3) {
-		var hourTemp = String("0" + (CosmorayDateObject.getHours()));
+	if (String(CosmorayDateObject.getHours()).length == v3) {
+		var hourTemp = String("0" + CosmorayDateObject.getHours());
 	} else {
 		var hourTemp = String(CosmorayDateObject.getHours());
 	}
 	kernalSyncKey = kernalSyncKey + monthTemp + dateTemp + hourTemp;
 	return kernalSyncKey;
-	}
-	return "Don't HACK!";
 }
 
 function obfsTitleHearthstone(){
