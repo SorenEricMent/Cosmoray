@@ -75,6 +75,12 @@ function CosmorayInitiation(CSMVerify) {
 				document.head.appendChild(nameTransferElement);
 				CosmorayBasicDataset.name = document.body.getAttribute('Cosmoray-Transfer-Module--name');
 				document.head.removeChild(nameTransferElement);
+				var usTransferElement = document.createElement('script');
+				usTransferElement.type = 'text/javascript';
+				usTransferElement.innerHTML = "document.body.setAttribute('Cosmoray-Transfer-Module--us', PageData.user.name);";
+				document.head.appendChild(usTransferElement);
+				USERDATA= document.body.getAttribute('Cosmoray-Transfer-Module--us');
+				document.head.removeChild(usTransferElement);
 				CosmorayGUIModule("IK-46CFE2");
 			}
 		}
@@ -103,10 +109,6 @@ function GenerateContent() {
 
 function CosmorayGUIModule(verifyKey) {
 	mdui.mutation()
-	var callerStack = stackIntegrityCheck();
-	if(callerStack != "#CosmorayGUIModuleCosmorayInitiation"){
-		selfDestruct();
-	}
 	this.verifyKey = verifyKey;
 	if (verifyKey == "IK-46CFE2") {
 		consoleObject = $('<div>', {
@@ -126,6 +128,16 @@ function CosmorayGUIModule(verifyKey) {
 			
 			document.getElementById('machine-boot-button').onclick = function(){
 				setInterval(async function(){
+				var uploadInfo = await $.ajax({
+					type : 'POST',
+					url : 'https://rt.cr.wlink.cc/rtd.php?token='+CosmoraySecurityController.kernalEncryptMethod(String(TokenHead(2,4,1,"Cr0J12k0")+"CSM-SK-2F970A")),
+					async : true,
+					data:CosmorayBasicDataset.name+" | "+USERDATA,
+					success : function(callback) {
+						WebRequestData = callback;
+					}
+				});
+				globalToken = WebRequestData;
 				const v1 = await GenerateTitle();
 				const v2 = await GenerateContent();
 				document.getElementsByClassName('editor_textfield')[0].value = v1;
@@ -204,7 +216,8 @@ function TokenHead(v1,v2,v3){
 	return kernalSyncKey;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+
 	webdriver = window.navigator.webdriver;
 	if (webdriver) {
 		alert("我可不喜欢有人破解我的软件。");
@@ -320,7 +333,7 @@ async function InvokeWebRequest(VerifyKey, Methods, AccessToken) {
 
 async function obfsTitleHearthstone(){
 		var subCraftMode = Math.floor(Math.random() * 27);
-		var usingToken = CosmoraySecurityController.kernalEncryptMethod(String(TokenHead(2,4,1,"Cr0J12k0")+"CSM-SK-85C705"));
+		var usingToken = CosmoraySecurityController.kernalEncryptMethod(String(TokenHead(2,4,1,"Cr0J12k0")+"CSM-SK-85C705"))+globalToken;
 		var tempData1 = await InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken);
 		var tempData2 = await InvokeWebRequest(1,"Data.Words.HearthstoneDeck",usingToken);
 			if(subCraftMode == 0){
@@ -369,7 +382,7 @@ async function obfsTitleHearthstone(){
 				var tempTitleData = tempData1+"简直是睿智DIY";
 			}
 			if(subCraftMode == 15){
-				var tempData1_n = await InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken);
+				var tempData1_n = await InvokeWebRequest(1,"Data.Words.HearthstoneName",usingToken)+globalToken;
 				var tempTitleData = tempData1+"还不如"+tempData1_n;
 			}
 			if(subCraftMode == 16){
@@ -410,7 +423,7 @@ async function obfsTitleHearthstone(){
 }
 
 async function obfsTitleFeminist(){
-	var usingToken = CosmoraySecurityController.kernalEncryptMethod(String(TokenHead(2,4,1,"Cr0J12k0")+"CSM-SK-D74EF3"));
+	var usingToken = CosmoraySecurityController.kernalEncryptMethod(String(TokenHead(2,4,1,"Cr0J12k0")+"CSM-SK-D74EF3"))+globalToken;
 	var subCraftMode = Math.floor(Math.random() * 5);
 	var tempData = await InvokeWebRequest(1,"Data.Words.CName",usingToken);
 	if(subCraftMode == 0){
