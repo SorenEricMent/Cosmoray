@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Cosmoray",
     "description": "百度贴吧优化插件 By WinslowEric",
-    "version": "0.0.1",
+    "version": "0.0.6",
     "permissions": [
         "tabs",
         "https://api.cr.wlink.cc/",
@@ -10,6 +10,7 @@
         "https://verify.cr.wlink.cc/",
         "https://rt.cr.wlink.cc/",
         "https://tieba.baidu.com/",
+        "https://v1.hitokoto.cn/",
         "contextMenus",
 		"tabs",
 		"notifications",

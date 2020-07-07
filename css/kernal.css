@@ -4,7 +4,7 @@
 	height:100%;
 	top:0px;
 	left:0px;
-	z-index:10001;
+	z-index:50001;
 	background-color:rgba(178,196,255,0.7);
 	padding:3px;
 }
@@ -30,5 +30,17 @@
 }
 #speedControl,#sc1,#sc2,#ctips{
 	display:inline;
-	font-weight:200px;
+	font-weight:200;
+}
+.mdui-dialog{
+	z-index:99999;
+}
+.mdui-snakebar{
+	z-index:99998;
+}
+.dialogJmodal{
+	z-index:100;
+}
+.dialogJ{
+	z-index:100;
 }
