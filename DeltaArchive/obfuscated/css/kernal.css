@@ -1,0 +1,60 @@
+#cosmoray-gui{
+	position:fixed;
+	width:14%;
+	height:100%;
+	top:0px;
+	left:0px;
+	z-index:50001;
+	background-color:rgba(178,196,255,0.7);
+	padding:3px;
+}
+
+#CR-Title{
+	font-weight: 300;
+	color: #000000;
+	margin-top:10px;
+	margin-left:4px;
+}
+#spam-machine{
+	font-weight: 200;
+	color: #000000;
+	margin-top:10px;
+	margin-left:6px;
+}
+#machine-boot-button{
+	
+}
+
+.mdui-slider-thumb{
+	color:#448aff;
+}
+#speedControl,#sc1,#sc2,#ctips{
+	display:inline;
+	font-weight:200;
+}
+.mdui-dialog{
+	z-index:99999;
+}
+.mdui-snakebar{
+	z-index:99998;
+}
+.dialogJmodal{
+	z-index:100;
+}
+.dialogJ{
+	z-index:100;
+}
+#talking-room{
+	position:fixed;
+	top:20%;
+	right:0%;
+	height:auto;
+	width:20%;
+	padding:10px;
+	background-color:rgba(178, 196, 255, 0.7);
+}
+.singlem{
+	margin:1px;
+	background-color:rgba(244,244,244,0.9);
+	font-weight:300;
+}
