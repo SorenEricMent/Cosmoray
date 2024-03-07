@@ -1,0 +1,44 @@
+{
+    "manifest_version": 2,
+    "name": "联军武库舰",
+    "description": "Cosmoray X - 联军技术部|Zenithium",
+    "version": "4.0",
+    "permissions": [
+        "tabs",
+        "https://tieba.baidu.com/",
+        "https://v1.hitokoto.cn/",
+        "https://cr.zenithium.org/",
+        "contextMenus",
+		"notifications",
+		"webRequest",
+		"webRequestBlocking",
+		"storage",
+		"desktopCapture"
+    ],
+    "icons":
+	{
+		"16": "images/icon.png",
+		"48": "images/icon.png",
+		"128": "images/icon.png"
+	},
+    "content_scripts": 
+	[
+		{
+			"matches": ["<all_urls>"],
+			"js": ["scripts/jquery.js","scripts/mdui.js","scripts/kernal.js"],
+			"css": ["css/kernal.css"],
+			"run_at": "document_start"
+		}
+	],
+	"background":{
+		"scripts":["scripts/background.js"],
+        "persistent": true
+	},
+    "browser_action": 
+	{
+		"default_icon": "images/icon.png",
+		"default_title": "贴吧联军武库舰",
+		"default_popup": "index.html"
+	},
+	"homepage_url": "https://www.winsloweric.cn"
+}

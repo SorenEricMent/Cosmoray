@@ -1,0 +1,42 @@
+#cosmoray-main-gui-tb,#cosmoray-st,#cosmoray-dt,#cosmoray-wf,#cosmoray-bw{
+	width:16%;
+	height:100%;
+	padding:4px;
+	position:fixed;
+	left:-17%;
+	top:0;
+	z-index:10001;
+	background-color:rgba(89,114,146,0.95);
+}
+#cosmoray-loading{
+	z-index:10002;
+	position:fixed;
+	top:0;
+	left:0;
+}
+.cosmoray-sub2{
+	font-size:large;
+}
+.cosmoray-title{
+	font-weight: 400;
+	font-size:xx-large;
+	color:rgb(38,50,56);
+	display:block;
+	margin:5px;
+	margin-top:50px;
+}
+.cosmoray-subt{
+	font-weight: 300;
+	margin-left:5px;
+}
+#cosmoray-show{
+	width:120px;
+	height:40px;
+	position:fixed;
+	left:0;
+	top:0;
+	z-index:10001;
+}
+#tbshuatie,#tbdingtie{
+	
+}
